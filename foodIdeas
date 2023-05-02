@@ -1,0 +1,41 @@
+import customtkinter as ctk
+import tkinter as tk
+from PIL import Image, ImageTk
+
+root = tk.Tk()
+root.title('FoodIdea')
+root.eval('tk::PlaceWindow . center')
+bg_colour="#3d6466"
+frame1 = tk.Frame(root, width=600, height=700, bg=bg_colour)
+frame1.grid(row=0, column=0)
+frame1.pack_propagate(False)
+
+# Open the image and resize it
+image = Image.open("logo.jpg")
+image = image.resize((200, 200), Image.ANTIALIAS)
+
+# Convert the resized image to a PhotoImage object
+image_logo = ImageTk.PhotoImage(image)
+
+# Create a label with the resized image
+widge_logo = tk.Label(frame1, image=image_logo, bg=bg_colour)
+widge_logo.ina = image_logo
+widge_logo.pack()
+
+tk.Label(frame1,
+         text='Food Idea',
+         bg=bg_colour,
+         fg='white',
+         font=('TkMenuFont',14,)).pack()
+
+tk.Button(frame1,
+          text='Shuffle',
+          bg='gray',
+          fg='black',
+          font=('TkMenuFont',14),
+          cursor='hand2',
+          activebackground='#badee2',
+          command=lambda:load_frame2()).pack(pady=20)
+
+root.mainloop()
+
